@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <title>Show Info</title>
+
+    <style>
+      p{
+        font-size: 15px;
+        color: rgb(15, 2, 2);
+        font-weight: 400;
+       
+        
+      }
+      h1{
+        color: rgb(71, 55, 216);
+        font-size: x-large;
+        
+      }
+    
+      @page {
+          padding: 20px;
+          size: letter portrait;
+          font-family: Arial, Helvetica, sans-serif;
+          @frame content_frame {
+              left: 50pt;
+              width: 512pt;
+              top: 50pt;
+              height: 692pt;
+              /* -pdf-frame-border: 1;    for debugging the layout */
+          }
+      }
+      
+    </style>
+
+  </head>
+  <body>
+        
+    <div class="container  bg-info" >
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+              {% ifequal format 'MLA'%}
+              <h1>MLA Format</h1>
+              
+                <hr>
+                {% for article in articles %}
+                <p>{{article.getMlaAuthors}}"{{article.title}}."<i>{{article.journal}}</i>,
+                  {% ifnotequal article.volume 0 %}
+                  vol.{{article.volume}},
+                  {% endifnotequal %}
+                  {{article.get_pub_year}},
+                  {% ifnotequal article.pages '' %}
+                  pp.{{article.pages}}
+                  {% endifnotequal %}
+                </p> 
+              
+                {% endfor %}
+
+                {% for book in books %}
+                <p>{{book.getMlaAuthors}}"{{book.title}}.",
+                  {% ifnotequal book.volume 0 %}
+                  vol.{{book.volume}},
+                  {% endifnotequal %}
+                  {{book.get_pub_year}}
+                  {% ifnotequal book.pages '' %}
+                  ,pp.{{book.pages}}
+                  {% endifnotequal %}
+                </p>
+                
+                {% endfor %}
+                {% for conference in conferences %}
+                <p>{{conference.getMlaAuthors}}"{{conference.title}}."
+                  {% ifnotequal conference.volume 0 %}
+                  ,vol.{{conference.volume}},
+                  {% endifnotequal %}
+                  {{conference.get_pub_year}}
+                  {% ifnotequal conference.pages '' %}
+                  ,pp.{{conference.pages}}
+                  {% endifnotequal %}
+                </p>
+                
+               
+
+                {% endfor %}
+
+              {% endifequal  %}
+
+            {% ifequal format 'APA'%}
+              <h1>APA Export</h1>
+              {% for article in articles %}
+                <p>{{article.getApaAuthors}}.({{article.get_pub_year}}). {{article.title}}.<i>{{article.journal}}</i>
+                  {% ifnotequal article.volume 0 %}
+                  .{{article.volume}}
+                  {% endifnotequal %}
+                  {% if article.issue %}
+                  ({{article.issue}})
+                  {% endif %}
+                  {% ifnotequal article.pages '' %}
+                  .{{article.pages}}
+                  {% endifnotequal %}
+                </p>
+               
+                {% endfor %}
+
+                {% for book in books %}
+                <p>{{book.author.last_name}}, {{book.author.first_name}},et.al "{{book.title}}."
+                  {% ifnotequal book.volume 0 %}
+                  ,vol.{{book.volume}}
+                  {% endifnotequal %}
+                  ,{{book.get_pub_year}}
+                  {% ifnotequal book.pages '' %}
+                  ,pp.{{book.pages}}
+                  {% endifnotequal %}
+                 </p>
+             
+
+                {% endfor %}
+                {% for conference in conferences %}
+                <p>{{conference.getApaAuthors}}.
+                  {% if conference.get_pub_year %}
+                  ({{conference.get_pub_year}})
+                  {% endif %}
+                   {{conference.title}}.In<i> {{conference.conference_name}}</i> 
+                     {% ifnotequal conference.volume 0 %}
+                      .(vol.{{conference.volume}},
+                     {% endifnotequal %}
+                     {% ifnotequal conference.pages ''  %}
+                        {% ifequal conference.volume 0 %}
+                        .(
+                        {% endifequal %}
+                        pp.{{conference.pages}}).
+                     {% endifnotequal %}
+                   {{conference.publisher}}</p>
+             
+                {% endfor %}
+            {% endifequal  %}
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+  
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  </body>

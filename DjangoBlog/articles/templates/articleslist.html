@@ -1,0 +1,76 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+<div class="export-div ">
+<a href="{% url 'article:export-pdf' export_Format='MLA'%}" class="btn btn-dark">Export as MLA</a>
+
+<a href="{% url 'article:export-pdf' export_Format='APA'%}" class="btn btn-dark">Export as APA </a>
+<a href="{% url 'article:export-excel' %}" class="btn btn-dark">Export as Excel Sheet </a>
+<a href="{% url 'article:export-bibtex' %}" class="btn btn-dark">Export as Bibtex  </a>
+</div>
+{% endif %}
+<br>
+<br> 
+{% if messages %}
+<div class=" alert alert-dark messages">
+<ul>
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+        {{ message }}
+    </li>
+    {% endfor %}
+</ul>
+
+</div>
+{% endif %}
+
+
+    <div class='articles'>
+        {%for article in articles%}
+        <div class ='article'>
+            
+            <h2><a href="{% url 'article:detail' slug=article.slug %}">{{article.title}}</a></h2>
+            <p >{{article.getAuthors}}</p>
+            <p>{{article.journal}} {{article.pages}}</p>
+			<a class="btn btn-secondary" href="{% url 'article:update_data' type='article' slug=article.slug %}">Update</a>
+            <a class="btn btn-danger" href="{% url 'article:delete-data' type='article' slug=article.slug %}">Delete</a>
+
+        </div>
+        {%endfor%}
+        {%for book in books%}
+        <div class ='article'>
+            
+            <h2><a href="{% url 'article:detail' slug=book.slug %}">{{book.title}}</a></h2>
+            <p>{{book.getAuthors}}</p>
+            <p> {{book.pages}}</p>
+			<a class="btn btn-secondary" href="{% url 'article:update_data' type='book' slug=book.slug %}">Update</a>
+            <a class="btn btn-danger" href="{% url 'article:delete-data' type='book' slug=book.slug %}">Delete</a>
+
+        </div>
+        {%endfor%}
+
+        {%for article in conference_article %}
+        <div class ='article'>
+            
+            <h2><a href="{% url 'article:detail' slug=article.slug %}">{{article.title}}</a></h2>
+            <p style="overflow: hidden;">{{article.getAuthors}}</p>
+            <p>{{article.conference_name}}, {{article.pages}}</p>
+			<a class="btn btn-secondary" href="{% url 'article:update_data' type='conference' slug=article.slug %}">Update</a>
+            <a class="btn btn-danger" href="{% url 'article:delete-data' type='conference' slug=article.slug %}">Delete</a>
+        </div>
+        {%endfor%}
+        {%for article in general_articles %}
+        <div class ='article'>
+            
+            <h2><a href="{% url 'article:detail' slug=article.slug %}">{{article.title}}</a></h2>
+            <p style="overflow: hidden;">{{article.getAuthors}}</p>
+            <p>{{article.conference_name}}, {{article.pages}}</p>
+			<a class="btn btn-secondary" href="{% url 'article:update_data' type='general' slug=article.slug %}">Update</a>
+            <a class="btn btn-danger" href="{% url 'article:delete-data' type='general' slug=article.slug %}">Delete</a>
+        </div>
+        {%endfor%}
+
+    </div>
+   
+{% endblock %}

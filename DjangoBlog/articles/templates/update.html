@@ -1,0 +1,26 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+<div class="entry-edit-form">
+<h1 style="text-align: center;">Update {{type}}</h1>
+<form action="{% url 'article:update_data' type=type slug=slug %}"  method="POST" class="form-site" enctype="multipart/form-data">
+	{%csrf_token%}
+	{% for hidden in form.hidden_fields %}
+	{{hidden}}
+	{% endfor %}
+	{% for field in form.visible_fields %}
+	<p>
+	  {{ field.label_tag }}<br>
+	  {{ field }}
+	  {% if field.help_text %}
+	    <small style="color: grey">{{ field.help_text }}</small>
+	  {% endif %}
+	  {% for error in field.errors %}
+	    <p style="color: red">{{ error }}</p>
+	  {% endfor %}
+	</p>
+      {% endfor %}
+	<input type="submit" class="btn btn-success" value="submit">
+    </form>
+</div>
+
+{% endblock %}

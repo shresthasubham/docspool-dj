@@ -1,0 +1,12 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+<div class="bibtex-upload-form">
+<h1>Choose Bibtex</h1>
+<form action="{% url 'article:bibtex-upload' %}" method="POST" class="form-site" enctype="multipart/form-data">
+	{%csrf_token%}
+	{{biptex}}
+	<input type="submit" name="bibtexUpload" class="btn btn-secondary" value="Populate">
+    </form>
+</div>
+
+{% endblock %}

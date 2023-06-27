@@ -1,0 +1,25 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="card">
+  <img src="{% static 'images/person_4.png' %}" alt="John" style="width:100%">
+  <h1>{{request.user.username}}</h1>
+  <p class="title">Lecturer</p>
+  <p>Pulchowk Campus</p>
+  <div style="margin: 24px 0;">
+    <a href="#"><i class="fa fa-dribbble"></i></a> 
+    <a href="#"><i class="fa fa-twitter"></i></a>  
+    <a href="#"><i class="fa fa-linkedin"></i></a>  
+    <a href="#"><i class="fa fa-facebook"></i></a> 
+  </div>
+  <p><button>Contact</button></p>
+</div>
+
+<!-- <h1>Profile section goes here</h1>
+<p>UserName:{{request.user.username}}</p>
+<p>FirstName:{{request.user.first_name}}</p>
+<p>LastName:{{request.user.last_name}}</p>
+<p>Email:{{request.user.email}}</p> -->
+{% endblock %}

@@ -1,0 +1,137 @@
+[
+{
+    "model": "articles.article",
+    "pk": 1,
+    "fields": {
+        "title": "A new article",
+        "slug": "a-new-article",
+        "co_authors": "jack dorsey, shane watson",
+        "pub_date": "2019-06-23",
+        "journal": "Don't know that yet",
+        "volume": 3,
+        "issue": 1,
+        "pages": "33-44",
+        "description": "Not any value for now",
+        "author": 1,
+        "citations": 3,
+        "publisher": "IEEE",
+        "article_link": "https://scholar.google.com/"
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 2,
+    "fields": {
+        "title": "Red amount administration significant.",
+        "slug": "red-amount-administration-significant",
+        "co_authors": "James Wisley, John doe, Ram Shah",
+        "pub_date": "1981-08-08",
+        "journal": "Imagine west that son. Expert shake guy well only fast account. Appear budget offer draw.",
+        "volume": 2932,
+        "issue": -29251,
+        "pages": "33-44",
+        "description": "No description",
+        "author": 1,
+        "citations": -9259,
+        "publisher": "IEEE",
+        "article_link": "https://hale.com/post/"
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 3,
+    "fields": {
+        "title": "Heavy see Republican thank night newspaper.",
+        "slug": "heavy-see-republican-thank-night-newspaper",
+        "co_authors": "James Wisley,Ram Shah",
+        "pub_date": "1981-07-16",
+        "journal": "Sport prevent phone year thus main. Sit staff course property nearly course.",
+        "volume": 29531,
+        "issue": -26396,
+        "pages": "33-44",
+        "description": "No description",
+        "author": 1,
+        "citations": 23518,
+        "publisher": "IEEE",
+        "article_link": "https://sanford.com/"
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 4,
+    "fields": {
+        "title": "Whom school personal toward foreign.",
+        "slug": "Whom-school-personal-toward-foreign",
+        "co_authors": "jack smith, Ross tailor",
+        "pub_date": "1976-08-17",
+        "journal": "Like possible before discover the sing democratic. Structure American here low.",
+        "volume": 5172,
+        "issue": 26974,
+        "pages": "33-44",
+        "description": "No description",
+        "author": 1,
+        "citations": 11013,
+        "publisher": "IEEE",
+        "article_link": "http://www.robinson.info/register.htm"
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 5,
+    "fields": {
+        "title": "Attention herself kitchen leader.",
+        "slug": "attention-herself-kitchen-leader",
+        "co_authors": "Paras Khadka, Karan Kc",
+        "pub_date": "1970-04-18",
+        "journal": "Reveal make no character seat.",
+        "volume": -32702,
+        "issue": -5865,
+        "pages": "33-44",
+        "description": "No description",
+        "author": 1,
+        "citations": -11608,
+        "publisher": "IEEE",
+        "article_link": "http://dunn-turner.com/about/"
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 6,
+    "fields": {
+        "title": "Seat social until.",
+        "slug": "seat-social-util",
+        "co_authors": "Mitchell Starc ,David Warner",
+        "pub_date": "2018-09-13",
+        "journal": "Dog main very enough industry cover newspaper.",
+        "volume": -21693,
+        "issue": 8722,
+        "pages": "33-44",
+        "description": "No description",
+        "author": 1,
+        "citations": 19588,
+        "publisher": "IEEE",
+        "article_link": "http://little.com/wp-content/blog/main/faq/"
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 7,
+    "fields": {
+        "title": "Quickly wait Mr picture parent student generation.",
+        "slug": "quickly-wait-mr-picture-parent-student-generation",
+        "co_authors": "David Miller, Ben Stokes",
+        "pub_date": "2008-09-02",
+        "journal": "Me suggest near series. Language today feel style without sure chance imagine.",
+        "volume": -30912,
+        "issue": -29317,
+        "pages": "33-44",
+        "description": "No description",
+        "author": 1,
+        "citations": 500,
+        "publisher": "IEEE",
+        "article_link": "http://brown-carpenter.com/post/"
+    }
+}
+
+
+]

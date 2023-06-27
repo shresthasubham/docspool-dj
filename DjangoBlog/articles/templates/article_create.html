@@ -1,0 +1,32 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+
+
+<div class="create-entry-form">
+  <h2 style="width: 100%; text-align: center;" class="h1">Create {{type}}</h2>
+  <br>
+
+<form action="{% url 'article:create' type  %}"  method="POST" class="form-site" enctype="multipart/form-data">
+    {%csrf_token%}
+	{% for hidden in form.hidden_fields %}
+	{{hidden}}
+	{% endfor %}
+    {% for field in form.visible_fields %}
+    <p>
+      {{ field.label_tag }}<br>
+      {{ field }}
+      {% if field.help_text %}
+        <small style="color: grey">{{ field.help_text }}</small>
+      {% endif %}
+      {% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+      {% endfor %}
+    </p>
+  {% endfor %}
+    <input type="submit" class="btn btn-success" value="Create">
+</form>
+</div>
+<br>
+<hr>
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+
+{% for article in articles %}
+<div class='article'>
+	<h2>{{article.title}} <small>{{article.version}}</small></h2>
+    <p ><span class="article-headings"> Authors:</span>{{article.getAuthors}}</p>
+
+    {% if article.journal %}
+        <p ><span class="article-headings">Journal:</span>{{article.journal}}</p>
+    {% endif %}
+
+    <p><span class="article-headings">Description:</span>{{article.description}}</p>
+    <p><span class="article-headings">Date:</span> {{article.pub_date.year}}</p>
+
+    {% ifnotequal article.volume 0 %}
+        <p ><span class="article-headings">Volume:</span> {{article.volume}}</p>
+    {% endifnotequal %}
+
+    {% ifnotequal article.page '' %}
+        <p><span class="article-headings">Pages:</span>{{article.pages}}</p>
+    {% endifnotequal %}
+
+    {% if article.citations %}
+        <p><span class="article-headings">Citations:</span>{{article.citations}}</p>
+    {% endif %}
+
+    {% if article.publisher %}
+        <p><span class="article-headings">Publisher:</span>{{article.publisher}}</p>
+    {% endif %}
+
+    {% ifnotequal article.DOI '' %}
+        <p><span class="article-headings">DOI:</span>{{article.DOI}}</p>
+    {% endifnotequal %}
+
+    {% if article.journal_type %}
+        <p><span class="article-headings">Type:</span>{{article.journal_type}}</p>
+    {% endif %}
+
+    {% if article.impactFactor %}
+        {% ifnotequal article.impactFactor 0 %}
+            <p><span class="article-headings">Impact Factor:</span>{{article.impactFactor}}</p>
+        {% endifnotequal %}   
+    {% endif %}
+
+    {% if article.sjrRating %}
+        {% ifnotequal article.sjrRating 0 %}
+            <p><span class="article-headings">SJR Rating:</span>{{article.sjrRating}} {{article.quartile}}</p>
+        {% endifnotequal %}
+    {% endif %}
+
+    {% if article.peer_reviewed %}       
+        <p><span class="article-headings">Is peer reviewed:</span>{{article.peer_reviewed}}</p>  
+    {% endif %}
+
+
+
+    {% if article.edition %}       
+        <p><span class="article-headings">Edition</span>{{article.edition}}</p>  
+    {% endif %}
+    {% if article.isbn %}       
+        <p><span class="article-headings">ISBN</span>{{article.isbn}}</p>  
+    {% endif %}
+
+
+    {% if article.conference_name %}       
+        <p><span class="article-headings">Book title</span><span class="article-body">{{article.conference_name}}</span></p>  
+    {% endif %}
+
+
+    {% if article.article_link %}
+    	<a href="{{article.article_link}} class = "link-info">View Article</a>
+	{% else %}
+		<a href = "#" class = "link-info">View Article</a>
+	{% endif %}
+	
+	 <div class = "text-right">
+		<a class="btn btn-outline-primary" href="{% url 'article:edit-data' type=type slug=article.slug %}">Edit</a>
+	</div>
+</div>
+{%endfor%}
+{% endblock %}
