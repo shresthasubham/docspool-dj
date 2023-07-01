@@ -32,6 +32,7 @@ urlpatterns = [
     path('<str:type>/<str:slug>/delete',views.DeleteArticle, name="delete-data"),
     path('<str:type>/<str:slug>/update',views.UpdateArticle, name = "update_data"),
     url('showArticle/(?P<slug>[\w-]+)',views.article_detail,name='detail'), 
+     path('search',views.search,name='search'),
     #name catching block in the url
    
 ]

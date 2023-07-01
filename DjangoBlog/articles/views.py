@@ -26,7 +26,7 @@ from django.template.loader import get_template
 from django.urls import reverse
 
 from xhtml2pdf import pisa
-
+from django.views.generic import ListView
 
 #pdf export here-------------------------
 def create_pdf(request,export_Format):
@@ -576,4 +576,9 @@ def UpdateArticle(request, type , slug):
     return render(request,"update.html",{"form":form,"type":type,
     'slug':slug})
  
+def search(request):
+    query=request.GET['search']
+    article=Article.objects.filter(title__icontains=query)
+ 
+    return render(request,'search.html',{'article':article})
 

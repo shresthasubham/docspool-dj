@@ -77,6 +77,10 @@
         }
         </script>
     </nav>
+    <form class="search" action="{%url  'article:search' %}" method="get">
+      {% csrf_token%}
+      <input class="searchTerm" placeholder="Enter your search term ..."  name="search" id="search"/><button class="searchButton" type="submit" >search</button>
+    </form>
      <!---
     {% endif %}
   
