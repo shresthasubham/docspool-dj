@@ -479,19 +479,7 @@ main .post-content .post-meta {
   top: 40%;
 }
 
-.burger.active:before {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=5);
-  /*for IE*/
-}
 
-.burger.active:after {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=-5);
-  /*for IE*/
-}
 
 .burger:focus {
   outline: none;
