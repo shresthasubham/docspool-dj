@@ -516,56 +516,110 @@ def DeleteArticle(request,type,slug):
 
 def UpdateArticle(request, type , slug):
 
+    # if type == 'article':
+    #     form_data =Article.objects.get(slug=slug)
+    #     print('form data----------------')
+    #     print(form_data)
+    #     print("yes it is journal")
+    #     form = forms.CreateArticle({"title":form_data.title,"version":form_data.version+1})
+
+    # elif type == 'conference':
+    #     form_data =ConferenceArticle.objects.get(slug=slug)
+    #     form = forms.CreateConference({"title":form_data.title,"version":form_data.version+1})
+
+    # elif type == 'book':
+    #     form_data =Book.objects.get(slug=slug)
+    #     form = forms.CreateBook({"title":form_data.title,"version":form_data.version+1})
+    
+    # elif type == 'general':
+    #     form_data =GeneralArticle.objects.get(slug=slug)
+    #     form = forms.GeneralArticle({"title":form_data.title,"version":form_data.version+1})
+
+    # if request.method =="POST":
+    #     messages.info(request, 'Update successful')
+    #     if type =='article':
+    #         form =forms.CreateArticle(request.POST)
+    #         if form.is_valid():
+    #             instance = form.save(commit = False)
+    #             instance.author = request.user 
+    #             instance.save()
+    #             return HttpResponseRedirect(reverse('article:list'))
+
+    #     elif type =='conference':
+    #         form =forms.CreateConference(request.POST)
+    #         if form.is_valid():
+    #             instance = form.save(commit = False)
+    #             instance.author = request.user
+    #             instance.save()
+    #             return HttpResponseRedirect(reverse('article:list'))
+
+    #     elif type =='book':
+    #         form =forms.CreateBook(request.POST)
+    #         if form.is_valid():
+    #             instance = form.save(commit = False)
+    #             instance.author = request.user
+    #             instance.save()
+    #             return HttpResponseRedirect(reverse('article:list'))
+    #     elif type =='general':
+    #         form =forms.GeneralArticle(request.POST)
+    #         if form.is_valid():
+    #             instance = form.save(commit = False)
+    #             instance.author = request.user
+    #             instance.save()
+    #             return HttpResponseRedirect(reverse('article:list'))
+        
+    #     print(request.POST)
+
+
+    
+    # # print(form)
+    # return render(request,"update.html",{"form":form,"type":type,
+    # 'slug':slug})
+
+    print("type:"+type)
+    print('slug:'+slug)           
     if type == 'article':
         form_data =Article.objects.get(slug=slug)
         print('form data----------------')
         print(form_data)
         print("yes it is journal")
-        form = forms.CreateArticle({"title":form_data.title,"version":form_data.version+1})
+        form = forms.CreateArticle(instance = form_data)
 
     elif type == 'conference':
         form_data =ConferenceArticle.objects.get(slug=slug)
-        form = forms.CreateConference({"title":form_data.title,"version":form_data.version+1})
+        form = forms.CreateConference(instance=form_data)
 
     elif type == 'book':
         form_data =Book.objects.get(slug=slug)
-        form = forms.CreateBook({"title":form_data.title,"version":form_data.version+1})
+        form = forms.CreateBook(instance=form_data)
     
     elif type == 'general':
         form_data =GeneralArticle.objects.get(slug=slug)
-        form = forms.GeneralArticle({"title":form_data.title,"version":form_data.version+1})
+        form = forms.GeneralArticle(instance=form_data)
 
     if request.method =="POST":
-        messages.info(request, 'Update successful')
+        messages.info(request, 'Edit successful')
         if type =='article':
-            form =forms.CreateArticle(request.POST)
+            form =forms.CreateArticle(request.POST,instance=form_data)
             if form.is_valid():
-                instance = form.save(commit = False)
-                instance.author = request.user 
-                instance.save()
+                form.save()
                 return HttpResponseRedirect(reverse('article:list'))
 
         elif type =='conference':
-            form =forms.CreateConference(request.POST)
+            form =forms.CreateConference(request.POST,instance=form_data)
             if form.is_valid():
-                instance = form.save(commit = False)
-                instance.author = request.user
-                instance.save()
+                form.save()
                 return HttpResponseRedirect(reverse('article:list'))
 
         elif type =='book':
-            form =forms.CreateBook(request.POST)
+            form =forms.CreateBook(request.POST,instance=form_data)
             if form.is_valid():
-                instance = form.save(commit = False)
-                instance.author = request.user
-                instance.save()
+                form.save()
                 return HttpResponseRedirect(reverse('article:list'))
         elif type =='general':
-            form =forms.GeneralArticle(request.POST)
+            form =forms.GeneralArticle(request.POST,instance=form_data)
             if form.is_valid():
-                instance = form.save(commit = False)
-                instance.author = request.user
-                instance.save()
+                form.save()
                 return HttpResponseRedirect(reverse('article:list'))
         
         print(request.POST)
@@ -573,7 +627,7 @@ def UpdateArticle(request, type , slug):
 
     
     # print(form)
-    return render(request,"update.html",{"form":form,"type":type,
+    return render(request,"edit.html",{"form":form,"type":type,
     'slug':slug})
  
 def search(request):
