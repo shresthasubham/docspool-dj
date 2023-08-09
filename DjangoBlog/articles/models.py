@@ -35,7 +35,7 @@ class Article(models.Model): #this is like a table with fields
     publisher =models.CharField(default=None,max_length=100)
     article_link =models.URLField(blank=True)
     DOI =models.CharField(max_length=100,blank=True)
-    journal_ID =models.AutoField(primary_key=True)
+    journal_ID =models.CharField(primary_key=True,max_length=100)
 
     #journal specific-----
     journal_type = models.CharField(max_length=20,choices=CHOICES,default='National')
