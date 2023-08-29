@@ -1,5 +1,5 @@
 # Docspool : A Publication Respository
 publication repository developers schema
 
-available at:
+Available at:
 http://pdxcuhqkceqfepd.bct.itclub.pp.ua/accounts/signup/
