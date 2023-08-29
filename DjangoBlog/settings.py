@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-thmb-6ztn$9iwe1*=d_!k696_2j#*zq6qa&zec_4#pnme@#e#(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 
