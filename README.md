@@ -1,4 +1,4 @@
-# docspool-dj
+# Docspool : A Publication Respository
 publication repository developers schema
 
 available at:
